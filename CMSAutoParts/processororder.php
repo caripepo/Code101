@@ -17,6 +17,8 @@
 		$oilqty = htmlspecialchars($_POST['oilqty']);
 		$sparkqty = htmlspecialchars($_POST['sparkqty']);
 		$find = htmlspecialchars($_POST['find']);
+		$address = htmlspecialchars($_POST['address']);
+		$DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];
 
 		// variables
 
@@ -91,7 +93,7 @@
 		//$rate * $qty = $total
 
 		// Tires discount
-
+				
 			if ($tireqty < 10) {
 				$tirediscount1 = $tireprice * $discountrate0; // 0% discount
 					echo "Subtotal tire with discount: $".number_format(($tireprice - $tirediscount1),2)."<br />";
@@ -109,6 +111,7 @@
 					echo "Subtotal tire with discount: $".number_format(($tireprice - $tirediscount4),2)."<br />";
 					echo $tirediscount4;
 			}
+			
 
 		echo "<br />";	
 		// Oil discount
@@ -117,15 +120,15 @@
 				$oildiscount1 = $oilprice * $discountrate0;
 					echo "Subotal oil with discount: $".number_format(($oilprice - $oildiscount1),2)."<br />";
 					echo $oildiscount1;
-			}	elseif (($oilqty >= 10) && ($oilqty <=49)) {
+				} elseif (($oilqty >= 10) && ($oilqty <=49)) {
 				$oildiscount2 = $oilprice * $discountrate5;
 					echo "Subtotal oil with discount: $".number_format(($oilprice - $oildiscount2),2)."<br />";
 					echo $oildiscount2;
-			}	elseif (($oilqty >= 50) && ($oilqty <=99)) {
+				} elseif (($oilqty >= 50) && ($oilqty <=99)) {
 				$oildiscount3 = $oilprice * $discountrate10;
 					echo "Subtotal oil with discount: $".number_format(($oilprice - $oildiscount3),2)."<br />";
 					echo $oildiscount3;
-			}	elseif ($oilqty >= 100) {
+				} elseif ($oilqty >= 100) {
 				$oildiscount4 = $oilprice * $discountrate15;
 					echo "Subtotal oil with discount: $".number_format(($oilprice - $oildiscount4),2)."<br />";
 					echo $oildiscount4;
@@ -137,15 +140,15 @@
 				$sparkdiscount1 = $sparkprice * $discountrate0;
 					echo "Subtotal spark with discount: $".number_format(($sparkprice - $sparkdiscount1),2)."<br />";
 					echo $sparkdiscount1;
-			}	elseif (($sparkqty >= 10) && ($sparkqty <=49)) {
+				} elseif (($sparkqty >= 10) && ($sparkqty <=49)) {
 				$sparkdiscount2 = $sparkprice * $discountrate5;
 					echo "Subtotal spark with discount: $".number_format(($sparkprice - $sparkdiscount2),2)."<br />";
 					echo $sparkdiscount2;
-			}	elseif (($sparkqty >= 50) && ($sparkqty <=99)) {
+				} elseif (($sparkqty >= 50) && ($sparkqty <=99)) {
 				$sparkdiscount3 = $sparkprice * $discountrate10;
 					echo "Subtotal spark with discount: $".number_format(($sparkprice - $discountspark3),2)."<br />";
 					echo $sparkdiscount3;
-			}	elseif ($sparkqty >= 100) {
+				} elseif ($sparkqty >= 100) {
 				$sparkdiscount4 = $sparkprice * $discountrate15;
 					echo "Subtotal spark with discount: $".number_format(($sparkprice - $discountspark4),2)."<br />";
 					echo $sparkdiscount4;
@@ -177,6 +180,9 @@
 			*/
 
 		echo "<br />";
+
+		echo '<p>Address to ship to is: '.$address.'</p>';
+
 		echo "<br />";
 
 		// echo "Subtotal: $".number_format($totalamount,2)."<br />"; // cancel this use the one below made by me :D
@@ -222,11 +228,13 @@
 					echo "<p>We do not know how this customer found us.</p>";
 					break;
 			}
-*/
+*/		
+	
 
 		echo "<p>Order processed at ";
 		echo date('H:i, jS F Y');
 		echo "</p>";
+
 	?>
 </body>
 </html>
